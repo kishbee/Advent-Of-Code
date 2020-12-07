@@ -1,2 +1,2 @@
-# Advent Of Code 2020
-My solutions for Advent Of Code 2020 (Written in Matlab)
+# Advent Of Code
+My solutions for Advent Of Code
