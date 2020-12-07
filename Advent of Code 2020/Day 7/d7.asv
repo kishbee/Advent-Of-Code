@@ -1,0 +1,55 @@
+tmp = readInput(2);
+strs = strings(size(tmp,1),1);
+for i =1:size(tmp)
+    tmp2 = tmp{i,:};
+    tmp2 = convertCharsToStrings(tmp2);
+    strs(i) = strjoin(tmp2);
+end
+
+%%
+bagList = strings(size(tmp,1),1);
+for i = 1:length(strs)
+    tmp = strfind(strs(i),"bag");
+    bagList(i) = extractBetween(strs(i),1,tmp(1)-2);
+end
+bagList=bagList';
+
+%%
+clearvars tmp
+for i = 1:length(strs)
+    bag(i).List = bagList(i);
+    count = 0;
+    for j = 1:length(strs)
+        if i ~= j && contains(strs(i),bagList(j))
+            count = count + 1;
+            tmp(count) = j;
+        end
+    end
+    if exist("tmp",'var')
+        bag(i).contained = tmp;
+    else
+        bag(i).contained = [];
+    end
+    clearvars tmp
+end
+%%
+outVals = bagRecursion(bag,1);
+length(unique(outVals))
+
+%%
+function outVals = bagRecursion(bag,vals)
+
+tmp = [];
+for i = 1:length(b)
+    tmp = [tmp bag(vals(i)).contained];
+end
+
+tmp = unique(tmp);
+
+if ~isempty(tmp)
+outVals = [tmp bagRecursion(bag,tmp)];
+else
+    outVals = [tmp];
+end
+
+end
