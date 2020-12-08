@@ -1,5 +1,5 @@
 function [maxID,seat] = d5f(tmp)
-%%
+%% readInput 3
 id = zeros(length(tmp),1);
 for i = 1:length(tmp)
     val = convertStringsToChars(tmp(i));

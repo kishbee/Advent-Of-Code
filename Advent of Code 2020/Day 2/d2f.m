@@ -1,4 +1,6 @@
-function [count1,count2,newTbl] = d2f(tbl)
+function [count1,count2,newTbl] = d2f()
+
+tbl = readInput(2); % load table of strings
 
 for i = 1:size(tbl,2)
     tbl.(i) = convertCharsToStrings(tbl.(i));
@@ -13,7 +15,7 @@ st = st';
 et = et';
 main = tbl.(3);
 
-%% calc
+%% Calculate 
 ruleCount = zeros(length(main),1);
 ruleIndex = zeros(length(main),1);
 for i = 1:length(main)
@@ -26,10 +28,10 @@ for i = 1:length(main)
         end
 end
 
-count1 = sum(ruleCount);
-count2 = sum(ruleIndex);
+count1 = sum(ruleCount); % returns cases that fit count spec.
+count2 = sum(ruleIndex); % returns cases that fit index spec.
 
-%% tbl maker
+%% tbl maker - builds processed table.
 newTbl = table(st,et,key,main,ruleCount,ruleIndex);
 newTbl.Properties.VariableNames = cellstr(["st","et","key","main","rcount","rind"]);
 
