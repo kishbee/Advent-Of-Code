@@ -1,5 +1,6 @@
 function [val1, val2, tbl] = d8f()
 vals = readInput(2);
+tbl = vals;
 vals.(3) = zeros(size(vals,1),1);
     counter = 1;
     counter2 = 1;
