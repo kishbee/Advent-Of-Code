@@ -26,7 +26,7 @@ for i = 1:length(tmp2)
     end
 end
 G = digraph(A);
-
+plot(G)
 %% derive core nodes
 
 en = G.Edges.EndNodes;
